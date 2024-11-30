@@ -45,13 +45,9 @@ probabilities = {
 
 encoded_value, intervals, bounds = arithmetic_encode_with_details(text, probabilities)
 
-cnt = 0
 print("\nГраницы интервалов на каждом шаге:")
 for step, (low, high) in enumerate(bounds, 1):
-    print(f"Шаг {step}: [{low:.15f}, {high:.15f})")
-    cnt += 1
-    if cnt == 11:
-        break
+    print(f"Шаг {step}: [{low:.10f}, {high:.10f})")
 
 binary_code = binary_representation(encoded_value)
 print(f"\nЗакодированное значение: {encoded_value:.15f}")
