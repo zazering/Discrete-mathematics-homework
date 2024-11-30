@@ -1,4 +1,4 @@
-def arithmetic_encode_with_details(text, probabilities):
+def arithmetic(text, probabilities):
     sorted_probs = dict(sorted(probabilities.items()))
     intervals = {}
     low = 0.0
@@ -22,7 +22,7 @@ def arithmetic_encode_with_details(text, probabilities):
     return encoded_value, intervals, bounds
 
 
-def binary_representation(value, precision=64):
+def to_bin(value, precision=64):
     """Преобразует число в двоичное представление с заданной точностью."""
     result = []
     for _ in range(precision):
@@ -43,12 +43,15 @@ probabilities = {
     'у': 0.0476190476190, 'ч': 0.0476190476190
 }
 
-encoded_value, intervals, bounds = arithmetic_encode_with_details(text, probabilities)
+encoded_value, intervals, bounds = arithmetic(text, probabilities)
 
 print("\nГраницы интервалов на каждом шаге:")
 for step, (low, high) in enumerate(bounds, 1):
     print(f"Шаг {step}: [{low:.10f}, {high:.10f})")
 
-binary_code = binary_representation(encoded_value)
-print(f"\nЗакодированное значение: {encoded_value:.15f}")
+binary_code = to_bin(encoded_value)
+print(f"\nЗакодированное значение: {encoded_value:.10f}")
 print(f"Бинарное представление: {binary_code}")
+
+
+print(len("1010001100111000001001011110101110101000000100110101000000000000"))
